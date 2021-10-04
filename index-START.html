@@ -8,7 +8,7 @@
 <body>
 
 
-  <div class="keys">
+  <div data-js=keyboardKeys class="keys">
     <div data-key="65" class="key">
       <kbd>A</kbd>
       <span class="sound">clap</span>
@@ -58,6 +58,19 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+
+  const keys = document.querySelector("[data-js='keyboardKeys']")
+
+  const key65 = document.querySelector("[data-key='65']")
+
+  document.addEventListener('keypress', (event) => {
+    if(event.key == 'a') {
+      key65.classList += ' playing'
+      setTimeout(() => {
+        key65.classList.remove('playing')
+      }, 100);
+    }
+  })
 
 </script>
 
