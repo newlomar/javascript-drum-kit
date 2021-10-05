@@ -63,7 +63,10 @@
 
   const key65 = document.querySelector("[data-key='65']")
 
+  const keysArray = [...keys.children].map(item => item.children[0].textContent.toLocaleLowerCase())
+
   document.addEventListener('keypress', (event) => {
+    console.log(keysArray)
     if(event.key == 'a') {
       key65.classList += ' playing'
       setTimeout(() => {
