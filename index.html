@@ -77,14 +77,16 @@
 
     const keysArray = [...keysDiv.children]
 
-    if (keysObj.hasOwnProperty(event.key)) {
+    const k = event.key.toLocaleLowerCase()
+
+    if (keysObj.hasOwnProperty(k)) {
       
-      let keyPressed = document.querySelector(`[data-key='${keysObj[event.key]}']`)
+      let keyPressed = document.querySelector(`[data-key='${keysObj[k]}']`)
       keyPressed.classList += ' playing'
       setTimeout(() => {
         keyPressed.classList.remove('playing')
       }, 100);
-      let audio = [...document.querySelectorAll(`[data-key='${keysObj[event.key]}']`)][1]
+      let audio = [...document.querySelectorAll(`[data-key='${keysObj[k]}']`)][1]
       audio.currentTime = 0
       audio.play()
     }
