@@ -59,19 +59,32 @@
 
 <script>
 
-  const keys = document.querySelector("[data-js='keyboardKeys']")
-
-  const key65 = document.querySelector("[data-key='65']")
-
-  const keysArray = [...keys.children].map(item => item.children[0].textContent.toLocaleLowerCase())
+  const keysObj = {
+    a: '65',
+    s: '83',
+    d: '68',
+    f: '70',
+    g: '71',
+    h: '72',
+    j: '74',
+    k: '75',
+    l: '76'
+  }
 
   document.addEventListener('keypress', (event) => {
-    console.log(keysArray)
-    if(event.key == 'a') {
-      key65.classList += ' playing'
+    
+    const keysDiv = document.querySelector("[data-js='keyboardKeys'")
+
+    const keysArray = [...keysDiv.children]
+
+    if (keysObj.hasOwnProperty(event.key)) {
+      
+      let keyPressed = document.querySelector(`[data-key='${keysObj[event.key]}']`)
+      keyPressed.classList += ' playing'
       setTimeout(() => {
-        key65.classList.remove('playing')
+        keyPressed.classList.remove('playing')
       }, 100);
+
     }
   })
 
