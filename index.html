@@ -84,8 +84,9 @@
       setTimeout(() => {
         keyPressed.classList.remove('playing')
       }, 100);
-      let datakeys = [...document.querySelectorAll(`[data-key='${keysObj[event.key]}']`)]
-      datakeys[1].play()
+      let audio = [...document.querySelectorAll(`[data-key='${keysObj[event.key]}']`)][1]
+      audio.currentTime = 0
+      audio.play()
     }
   })
 
